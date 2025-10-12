@@ -14,7 +14,9 @@ public class SeleniumTest {
     public void clickOn1MenuTest() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         WebElement navBarMenu = driver.findElement(By.cssSelector("nav#site-menu li[class='category-1']"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         navBarMenu.click();
 
         String pageTitle = driver.findElement(By.cssSelector("div#box-category h1[class='title']")).getText();
@@ -41,15 +43,13 @@ public class SeleniumTest {
     @Test
     public void clickOn3HomeIconTest() {
         WebDriver driver = new ChromeDriver();
-        driver.get("https://litecart.stqa.ru/en/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        WebElement navBarHomeIcon = driver.findElement(By.cssSelector("i[title='Home']"));
+        driver.get("https://litecart.stqa.ru/en/rubber-ducks-c-1/subcategory-c-2/");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebElement navBarHomeIcon = driver.findElement(By.cssSelector("nav#site-menu ul li i[title='Home']"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         navBarHomeIcon.click();
 
         String pageTitle = driver.getTitle();
-        Assert.assertEquals(pageTitle, "");
-
-        
+        Assert.assertEquals(pageTitle, "Online Store | My Store");
         }
 }
