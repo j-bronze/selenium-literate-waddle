@@ -7,16 +7,14 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-
 public class SeleniumTest {
 
     @Test
     public void clickOn1MenuTest() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         WebElement navBarMenu = driver.findElement(By.cssSelector("nav#site-menu li[class='category-1']"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         navBarMenu.click();
 
         String pageTitle = driver.findElement(By.cssSelector("div#box-category h1[class='title']")).getText();
@@ -27,13 +25,11 @@ public class SeleniumTest {
     public void clickOn2MenuItemTest() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
         WebElement navBarMenu = driver.findElement(By.cssSelector("nav#site-menu li[class='category-1']"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Actions actions = new Actions(driver);
         actions.moveToElement(navBarMenu);
         WebElement menuItem = driver.findElement(By.cssSelector("nav#site-menu ul li[class='category-2']"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         actions.moveToElement(menuItem).click().perform();
 
         String pageTitle = driver.findElement(By.cssSelector("div#box-category h1[class='title']")).getText();
@@ -44,7 +40,7 @@ public class SeleniumTest {
     public void clickOn3HomeIconTest() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/rubber-ducks-c-1/subcategory-c-2/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         WebElement navBarHomeIcon = driver.findElement(By.cssSelector("nav#site-menu ul li i[title='Home']"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         navBarHomeIcon.click();
