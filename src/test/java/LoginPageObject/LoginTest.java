@@ -8,7 +8,7 @@ import org.testng.asserts.SoftAssert;
 public class LoginTest extends TestBase {
 
     @Test
-    public void loginUsingCorrectCredentialsTest() {
+    public void loginUsingCorrectCredentialsTest() throws Exception {
         LoginPageObject.LoginPage loginPage = new LoginPage(driver);
         LoginPageObject.LoginResultPage loginResultPage = new LoginResultPage(driver);
 
@@ -18,7 +18,7 @@ public class LoginTest extends TestBase {
     }
 
     @Test
-    public void loginWithoutPasswordTest() {
+    public void loginWithoutPasswordTest() throws Exception {
         LoginPage loginPage = new LoginPage(driver);
         LoginResultPage loginResultPage = new LoginResultPage(driver);
 
@@ -32,7 +32,7 @@ public class LoginTest extends TestBase {
     }
 
     @Test
-    public void logOutTest() {
+    public void logOutTest() throws Exception {
         LoginPage loginPage = new LoginPage(driver);
         LoginResultPage loginResultPage = new LoginResultPage(driver);
 

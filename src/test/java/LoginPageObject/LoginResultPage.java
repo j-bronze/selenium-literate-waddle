@@ -1,42 +1,37 @@
 package LoginPageObject;
 
 import TestBase.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import static TestBase.Locators.getLocator;
 
 public class LoginResultPage extends TestBase {
-
-    private final By successLoggingOnMessage = By.cssSelector("div.notice.success");
-    private final By successLogOutMessage = By.cssSelector("div.notice.success");
-    private final By errorMessage = By.cssSelector("div.notice.errors");
-    private WebDriver driver;
 
     public LoginResultPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public boolean errorMessageIsVisible() {
-        return driver.findElement(errorMessage).isDisplayed();
+    public boolean errorMessageIsVisible() throws Exception {
+        return driver.findElement(getLocator("LoginResultPage.ErrorMessage")).isDisplayed();
     }
 
-    public String getErrorMessageText() {
-        return driver.findElement(errorMessage).getText();
+    public String getErrorMessageText() throws Exception {
+        return driver.findElement(getLocator("LoginResultPage.ErrorMessage")).getText();
     }
 
-    public boolean successLoggingOnMessageIsVisible() {
-        return driver.findElement(successLoggingOnMessage).isDisplayed();
+    public boolean successLoggingOnMessageIsVisible() throws Exception {
+        return driver.findElement(getLocator("LoginResultPage.SuccessLoggingOnMessage")).isDisplayed();
     }
 
-    public String getSuccessLoggingOnMessageText() {
-        return driver.findElement(successLoggingOnMessage).getText();
+    public String getSuccessLoggingOnMessageText() throws Exception {
+        return driver.findElement(getLocator("LoginResultPage.SuccessLoggingOnMessage")).getText();
     }
 
-    public boolean successLogOutMessageIsVisible() {
-        return driver.findElement(successLogOutMessage).isDisplayed();
+    public boolean successLogOutMessageIsVisible() throws Exception {
+        return driver.findElement(getLocator("LoginResultPage.SuccessLogOutMessage")).isDisplayed();
     }
 
-    public String getSuccessLogOutMessageText() {
-        return driver.findElement(successLogOutMessage).getText();
+    public String getSuccessLogOutMessageText() throws Exception {
+        return driver.findElement(getLocator("LoginResultPage.SuccessLogOutMessage")).getText();
     }
 
 }

@@ -11,7 +11,7 @@ import java.time.Duration;
 public class ProductTest extends TestBase {
 
     @Test
-    public void saleRibbonForCampaignItemTest() {
+    public void saleRibbonForCampaignItemTest() throws Exception {
         ProductListPage productListPage = new ProductListPage(driver);
 
         productListPage.saleRibbonForCampaignItemIsDisplayed();
@@ -20,7 +20,7 @@ public class ProductTest extends TestBase {
     }
 
     @Test
-    public void openPDPFromMostPopularSectionTest() {
+    public void openPDPFromMostPopularSectionTest() throws Exception {
         ProductListPage productListPage = new ProductListPage(driver);
         ProductDetailPage productDetailPage = new ProductDetailPage(driver);
         productListPage.openPDP();
@@ -29,7 +29,7 @@ public class ProductTest extends TestBase {
     }
 
     @Test
-    public void addToCartTest() {
+    public void addToCartTest() throws Exception {
         ProductListPage productListPage = new ProductListPage(driver);
         ProductDetailPage productDetailPage = new ProductDetailPage(driver);
         productListPage.openPDP();

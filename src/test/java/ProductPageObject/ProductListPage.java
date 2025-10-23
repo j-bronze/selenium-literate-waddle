@@ -7,32 +7,29 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static TestBase.Locators.getLocator;
+
 public class ProductListPage extends TestBase {
-
-    private final By productItem = By.cssSelector("div#box-most-popular li a");
-    private final By ribbonSale = By.cssSelector("div#box-campaigns div[class='sticker sale']");
-
-    private WebDriver driver;
 
     public ProductListPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public By getProductItem() {
-        return productItem;
+    public By getProductItem() throws Exception {
+        return getLocator("ProductListPage.ProductItem");
     }
 
-    public By getRibbonSale() {
-        return ribbonSale;
+    public By getRibbonSale() throws Exception {
+        return getLocator("ProductListPage.RibbonSale");
     }
 
-    public void openPDP() {
-        List<WebElement> listOfItems = driver.findElements(productItem);
+    public void openPDP() throws Exception {
+        List<WebElement> listOfItems = driver.findElements(getLocator("ProductListPage.ProductItem"));
         listOfItems.getFirst().click();
     }
 
-    public boolean saleRibbonForCampaignItemIsDisplayed() {
-        return driver.findElement(ribbonSale).isDisplayed();
+    public boolean saleRibbonForCampaignItemIsDisplayed() throws Exception {
+        return driver.findElement(getLocator("ProductListPage.RibbonSale")).isDisplayed();
     }
 
 }

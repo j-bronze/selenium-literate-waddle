@@ -1,42 +1,39 @@
 package CartPageObject;
 
+import TestBase.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutPage {
+import static TestBase.Locators.getLocator;
 
-    private final By cartWithGoods = By.cssSelector("div#box-checkout-customer h2[class='title']");
-    private final By cartEmpty = By.cssSelector("div#checkout-cart-wrapper");
-    private final By cartEmptyMessage = By.cssSelector("div#checkout-cart-wrapper em");
-
-    private WebDriver driver;
+public class CheckoutPage extends TestBase {
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public By getCartWithGoods() {
-        return cartWithGoods;
+    public By getCartWithGoods() throws Exception {
+        return getLocator("CheckoutPage.CartWithGoods");
     }
 
-    public By getCartEmpty() {
-        return cartEmpty;
+    public By getCartEmpty() throws Exception {
+        return getLocator("CheckoutPage.CartEmpty");
     }
 
-    public boolean cartWithGoodsIsOpened() {
-        return driver.findElement(cartWithGoods).isDisplayed();
+    public boolean cartWithGoodsIsOpened() throws Exception {
+        return driver.findElement(getLocator("CheckoutPage.CartWithGoods")).isDisplayed();
     }
 
-    public boolean cartEmptyIsOpened() {
-        return driver.findElement(cartEmpty).isDisplayed();
+    public boolean cartEmptyIsOpened() throws Exception {
+        return driver.findElement(getLocator("CheckoutPage.CartEmpty")).isDisplayed();
     }
 
-    public boolean cartEmptyMessageIsDisplayed() {
-        return driver.findElement(cartEmptyMessage).isDisplayed();
+    public boolean cartEmptyMessageIsDisplayed() throws Exception {
+        return driver.findElement(getLocator("CheckoutPage.CartEmptyMessage")).isDisplayed();
     }
 
-    public String getCartEmptyMessage() {
-        return driver.findElement(cartEmptyMessage).getText();
+    public String getCartEmptyMessage() throws Exception {
+        return driver.findElement(getLocator("CheckoutPage.CartEmptyMessage")).getText();
     }
 
 }

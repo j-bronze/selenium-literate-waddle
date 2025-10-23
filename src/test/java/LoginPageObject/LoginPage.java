@@ -1,34 +1,29 @@
 package LoginPageObject;
 
 import TestBase.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static TestBase.Locators.*;
+
 public class LoginPage extends TestBase {
-
-    private final By loginInput = By.name("email");
-    private final By passwordInput = By.name("password");
-    private final By loginButton = By.name("login");
-
-    private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void enterLogin(String username) {
-        driver.findElement(loginInput).sendKeys(username);
+    public void enterLogin(String username) throws Exception {
+        driver.findElement(getLocator("LoginPage.LoginInput")).sendKeys(username);
     }
 
-    public void enterPassword(String password) {
-        driver.findElement(passwordInput).sendKeys(password);
+    public void enterPassword(String password) throws Exception {
+        driver.findElement(getLocator("LoginPage.PasswordInput")).sendKeys(password);
     }
 
-    public void clickButton() {
-        driver.findElement(loginButton).click();
+    public void clickButton() throws Exception {
+        driver.findElement(getLocator("LoginPage.LoginButton")).click();
     }
 
-    public void login(String username, String password) {
+    public void login(String username, String password) throws Exception {
         enterLogin(username);
         enterPassword(password);
         clickButton();

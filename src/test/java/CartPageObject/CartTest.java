@@ -14,7 +14,7 @@ import java.time.Duration;
 public class CartTest extends TestBase {
 
     @Test
-    public void openEmptyCartTest() {
+    public void openEmptyCartTest() throws Exception {
         CartPageObject.CartPage cartPage = new CartPage(driver);
         CartPageObject.CheckoutPage checkoutPage = new CheckoutPage(driver);
 
@@ -27,7 +27,7 @@ public class CartTest extends TestBase {
     }
 
     @Test
-    public void openCartWithItemsTest() {
+    public void openCartWithItemsTest() throws Exception {
         ProductListPage productListPage = new ProductListPage(driver);
         ProductDetailPage productDetailPage = new ProductDetailPage(driver);
         CartPageObject.CartPage cartPage = new CartPage(driver);
