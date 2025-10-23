@@ -34,6 +34,9 @@ public class Locators {
                 return By.cssSelector(locator[1]);
             }
             case "id" -> {
+                return By.id(locator[1]);
+            }
+            case "xpath" -> {
                 return By.xpath(locator[1]);
             }
             default -> throw new Exception("No such locator type");
