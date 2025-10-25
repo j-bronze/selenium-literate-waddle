@@ -3,9 +3,9 @@ package SelenideProject;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 import java.time.Duration;
 
@@ -18,10 +18,7 @@ public class CartTest extends TestBase {
 
         cartPage.openCart();
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(checkoutPage.cartEmptyIsOpened());
-        softAssert.assertEquals(checkoutPage.getCartEmptyMessage(), "There are no items in your cart.");
-        softAssert.assertAll();
+        checkoutPage.getCartEmptyMessage().shouldBe(visible).shouldHave(text("There are no items in your cart."));
     }
 
     @Test
@@ -39,7 +36,7 @@ public class CartTest extends TestBase {
 
         cartPage.openCart();
 
-        Assert.assertTrue(checkoutPage.cartWithGoodsIsOpened());
+        checkoutPage.cartWithGoodsIsOpened().shouldBe(visible);
     }
 
 }

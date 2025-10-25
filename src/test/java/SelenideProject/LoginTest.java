@@ -1,8 +1,9 @@
 package SelenideProject;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class LoginTest extends TestBase {
 
@@ -13,7 +14,8 @@ public class LoginTest extends TestBase {
 
         loginPage.login("paftut@mailto.plus", "111111a");
 
-        Assert.assertEquals(loginResultPage.getSuccessLoggingOnMessageText(), "You are now logged in as Alex Besson.");
+        loginResultPage.getSuccessLoggingOnMessageText().shouldBe(visible)
+                .shouldHave(text("You are now logged in as Alex Besson."));
     }
 
     @Test
@@ -24,10 +26,9 @@ public class LoginTest extends TestBase {
         loginPage.enterLogin("paftut@mailto.plus");
         loginPage.clickButton();
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(loginResultPage.errorMessageIsVisible());
-        softAssert.assertEquals(loginResultPage.getErrorMessageText(), "You must provide both email address and password.");
-        softAssert.assertAll();
+        loginResultPage.getErrorMessageText().shouldBe(visible)
+                .shouldHave(text("You must provide both email address and password."));
+
     }
 
     @Test
@@ -37,15 +38,12 @@ public class LoginTest extends TestBase {
 
         loginPage.login("paftut@mailto.plus", "111111a");
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(loginResultPage.successLoggingOnMessageIsVisible());
+        loginResultPage.getSuccessLoggingOnMessageText().shouldBe(visible);
 
         LogOutPage logOutPage = new LogOutPage();
         logOutPage.logOut();
 
-        softAssert.assertTrue(loginResultPage.successLogOutMessageIsVisible());
-        softAssert.assertEquals(loginResultPage.getSuccessLogOutMessageText(), "You are now logged out.");
-        softAssert.assertAll();
+        loginResultPage.getSuccessLogOutMessageText().shouldBe(visible).shouldHave(text("You are now logged out."));
     }
 
 }

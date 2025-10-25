@@ -10,7 +10,8 @@ import static SelenideProject.Locators.getLocator;
 public class LogOutPage extends TestBase {
 
     public void logOut() throws Exception {
-        List<WebElement> listOfLinks = WebDriverRunner.getWebDriver().findElements(getLocator("LogOutPage.LogOutLink"));
+        List<WebElement> listOfLinks = WebDriverRunner.getWebDriver()
+                .findElements(getLocator("LogOutPage.LogOutLink"));
         listOfLinks.get(3).click();
     }
 
