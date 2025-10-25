@@ -3,10 +3,12 @@ package SelenideProject;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class ProductTest extends TestBase {
 
@@ -16,7 +18,7 @@ public class ProductTest extends TestBase {
 
         productListPage.saleRibbonForCampaignItemIsDisplayed();
 
-        Assert.assertTrue(productListPage.saleRibbonForCampaignItemIsDisplayed());
+        productListPage.saleRibbonForCampaignItemIsDisplayed().shouldBe(visible);
     }
 
     @Test
@@ -25,7 +27,7 @@ public class ProductTest extends TestBase {
         ProductDetailPage productDetailPage = new ProductDetailPage();
         productListPage.openPDP();
 
-        Assert.assertEquals(productDetailPage.getAddToCartButtonText(), "Add To Cart");
+        productDetailPage.getAddToCartButtonText().shouldBe(visible);
     }
 
     @Test
@@ -38,7 +40,7 @@ public class ProductTest extends TestBase {
         WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(5));
         wait.until(ExpectedConditions.textToBe(productDetailPage.getCartItemsQuantity(), "1"));
 
-        Assert.assertEquals(productDetailPage.getCartItemsQuantityText(), "1");
+        productDetailPage.getCartItemsQuantityText().shouldHave(text("1"));
     }
 
 }
