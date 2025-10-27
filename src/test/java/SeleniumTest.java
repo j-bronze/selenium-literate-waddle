@@ -4,16 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
 public class SeleniumTest {
+    WebDriver driver = new ChromeDriver();
+
     @Test
     public void seleniumTestOpenBrowser() {
 
-        WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
@@ -24,6 +26,10 @@ public class SeleniumTest {
 
         listOfLinks.get(10).click();;
 
+    }
+    @AfterMethod
+    public void teardown() {
+        driver.quit();
     }
 
 }
