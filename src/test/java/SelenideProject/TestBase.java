@@ -23,7 +23,7 @@ public class TestBase {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         String browser = System.getProperty("browser", "chrome");
-        String os = System.getProperty("os", "win");
+        String os = System.getProperty("os", "win11");
 
         switch (browser) {
             case "chrome" -> caps.setBrowserName(CHROME);
