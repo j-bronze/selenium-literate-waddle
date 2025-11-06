@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class SeleniumTest {
+    @Test
+    public void seleniumTestOpenBrowser() {
 
     @Test
     public void clickOn1MenuTest() {
